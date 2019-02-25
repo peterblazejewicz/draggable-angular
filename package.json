@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "serve . -s"
+    "start": "serve . -s",
+    "prettify": "prettier --write src/**/*.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
   },
   "devDependencies": {
     "@types/angular": "^1.6.54",
+    "prettier": "^1.16.4",
     "serve": "^10.1.2"
   }
 }
