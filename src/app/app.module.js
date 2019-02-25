@@ -1,7 +1,7 @@
 (function() {
     angular.module('demoApp', ['draggable']);
 
-    function DemoController(){
+    function DemoController() {
         console.log('DemoController');
         this.name = 'DemoController';
     }
@@ -12,7 +12,7 @@
             return document.querySelector('.container');
         },
         $onInit: function() {
-            var self =this;
+            var self = this;
             console.log('DemoController.$onInit');
         },
 
@@ -27,7 +27,5 @@
         },
     };
 
-
-    angular.module('demoApp')
-        .controller('DemoController', DemoController);
+    angular.module('demoApp').controller('DemoController', DemoController);
 })();

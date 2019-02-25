@@ -1,6 +1,5 @@
 // @ts-check
-(function (angular) {
-
+(function(angular) {
     var className = 'draggable-item';
 
     function Draggable($element) {
@@ -11,25 +10,24 @@
         this._onDragStop = this._onDragStop.bind(this);
     }
     Draggable.prototype = {
-
-        _onDragMove: function (evt) {
+        _onDragMove: function(evt) {
             this.onDragMove({
                 evt: evt,
             });
         },
-        _onDragStart: function (evt) {
+        _onDragStart: function(evt) {
             this.onDragStart({
                 evt: evt,
             });
         },
-        _onDragStop: function (evt) {
+        _onDragStop: function(evt) {
             this.onDragStop({
                 evt: evt,
             });
         },
 
-        $onInit: function () {},
-        $postLink: function () {
+        $onInit: function() {},
+        $postLink: function() {
             this.element.classList.add(className);
             this.container = this.getContainer();
             this.draggable = new window.Draggable.Draggable(this.container, {
@@ -38,19 +36,18 @@
             this.draggable.on('drag:start', this._onDragStart);
             this.draggable.on('drag:move', this._onDragMove);
             this.draggable.on('drag:stop', this._onDragStop);
-
         },
-        $destroy: function () {
+        $destroy: function() {
             this.draggable.off('drag:start', this._onDragStart);
             this.draggable.off('drag:move', this._onDragMove);
             this.draggable.off('drag:stop', this._onDragStop);
             this.draggable = undefined;
             console.log('$destroy');
-        }
-    }
+        },
+    };
     Draggable.$inject = ['$element'];
 
-    var descriptor = function () {
+    var descriptor = function() {
         return {
             restrict: 'A',
             bindToController: {
@@ -64,6 +61,5 @@
         };
     };
 
-    angular.module('draggable')
-        .directive('draggable', descriptor);
+    angular.module('draggable').directive('draggable', descriptor);
 })(angular);

@@ -1,8 +1,6 @@
 // @ts-check
 /// <reference lib="dom" />
-(function (angular, undefined) {
-
-
+(function(angular, undefined) {
     function SortableDirective($element) {
         /** @var {HTMLElement} element */
         this.element = $element.get(0);
@@ -10,8 +8,7 @@
         this.sortable = undefined;
     }
     SortableDirective.prototype = {
-
-        $onInit: function () {
+        $onInit: function() {
             this.sortable = new window.Draggable.Sortable(this.element, {
                 draggable: '.draggable',
                 mirror: {
@@ -23,13 +20,12 @@
     };
     SortableDirective.$inject = ['$element'];
 
-    var descriptor = function () {
+    var descriptor = function() {
         return {
             restrict: 'A',
             bindToController: {},
             controller: SortableDirective,
         };
-    }
-    angular.module('draggable')
-        .directive('sortable', descriptor);
+    };
+    angular.module('draggable').directive('sortable', descriptor);
 })(angular);

@@ -1,4 +1,4 @@
 // @ts-check
-(function (angular) {
+(function(angular) {
     angular.module('draggable', []);
 })(angular);
