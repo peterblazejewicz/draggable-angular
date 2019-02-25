@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,34 +12,35 @@
         body {
             min-height: 100;
         }
+
         body {
             position: relative;
         }
+
         .draggable {
             user-select: none;
         }
     </style>
 </head>
+
 <body>
-    <div class="container" ng-controller="DemoController as $demo">
+    <div class="container" ng-controller="DraggableDemoController as $draggableDemo">
         <div class="row">
             <div class="col">
-                <div draggable
-                    get-container="$demo.getContainer()"
-                    class="d-flex-inline draggable"
-                    on-drag-start="$demo.onDragStart(evt)"
-                    on-drag-move="$demo.onDragMove(evt)"
-                    on-drag-stop="$demo.onDragStop(evt)">
+                <div draggable get-container="$draggableDemo.getContainer()" class="d-flex-inline draggable"
+                    on-drag-start="$draggableDemo.onDragStart(evt)" on-drag-move="$draggableDemo.onDragMove(evt)"
+                    on-drag-stop="$draggableDemo.onDragStop(evt)">
                     Drag Me
                 </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <ul sortable>
-            <li class="draggable">First Element</li>
-            <li class="draggable">Second Element</li>
-            <li class="draggable">Third Element</li>
+    <div class="container" ng-controller="SortableDemoController as $sortableDemo">
+        <ul sortable on-sortable-start="$sortableDemo.onSortableStart(evt);" on-sortable-sort="$sortableDemo.onSortableSort(evt);"
+            on-sortable-sorted="$sortableDemo.onSortableSorted(evt);" on-sortable-stop="$sortableDemo.onSortableStop(evt);">
+            <li class="draggable" ng-repeat="item in $sortableDemo.items">
+                {{item}}
+            </li>
         </ul>
     </div>
     <script src="./node_modules/jquery/dist/jquery.js"></script>
@@ -48,6 +50,9 @@
     <script src="./src/draggable/draggable.directive.js"></script>
     <script src="./src/draggable/sortable.directive.js"></script>
     <script src="./src/app/app.module.js"></script>
+    <script src="./src/app/draggable-demo.controller.js"></script>
+    <script src="./src/app/sortable-demo.controller.js"></script>
     <script src="./src/main.js"></script>
 </body>
+
 </html>
